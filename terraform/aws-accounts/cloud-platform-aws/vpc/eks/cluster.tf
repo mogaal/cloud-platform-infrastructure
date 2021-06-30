@@ -24,7 +24,8 @@ module "eks" {
   cluster_name     = terraform.workspace
   subnets          = concat(tolist(data.aws_subnet_ids.private.ids), tolist(data.aws_subnet_ids.public.ids))
   vpc_id           = data.aws_vpc.selected.id
-  write_kubeconfig = false
+  write_kubeconfig = true
+  config_output_path = "/tmp/kubeconfig"
   cluster_version  = "1.18"
   enable_irsa      = true
 
