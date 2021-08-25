@@ -87,6 +87,15 @@ module "modsec_ingress_controllers" {
   depends_on = [module.ingress_controllers]
 }
 
+module "modsec_ingress_controllers" "stress_tests" {
+  source = "github.com/ministryofjustice/cloud-platform-terraform-modsec-ingress-controller?ref=0.3.1"
+
+  controller_name = "stresstest01"
+  replica_count   = "2"
+
+  depends_on = [module.ingress_controllers]
+}
+
 module "ingress_controllers" {
   source = "github.com/ministryofjustice/cloud-platform-terraform-ingress-controller?ref=0.3.3"
 
